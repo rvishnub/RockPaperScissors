@@ -9,10 +9,12 @@ namespace RockPaperScissors
     public class Turn
     {
 
-        string hand;
+        public string hand;
         string selection;
-        int score;
-        int randomNumber;
+        public string selectionOne;
+        public string selectionTwo;
+        public int score;
+        public int randomNumber;
 
         Player player;
 
@@ -20,17 +22,21 @@ namespace RockPaperScissors
 
         public Turn()
         {
-            this.hand = "";
-            this.score = 0;
+            selection = "";
+            score = 0;
         }
 
-        public void TakeTurn()
+        public string TakeTurn()
         {
             Console.WriteLine();
             Console.WriteLine("What is your selection, {0}? Rock, Paper or Scissors?", player);
             Console.WriteLine();
             selection = Console.ReadLine();
-            this.hand = selection.ToUpper();
+            Console.WriteLine("{0}'s selection for this round was {1}.", player, selection);
+            Console.WriteLine();
+            selection = selection.ToUpper();
+
+            return selection;
             
         }
 
@@ -44,14 +50,17 @@ namespace RockPaperScissors
         public string ComputerTakeTurn()
         {
             selection = Hands[randomNumber];
+            Console.WriteLine("{0}'s selection for this round was {1}.", player, selection);
+            Console.WriteLine();
+
             return selection;
         }
      
         public string GetSelection()
         {
-            Console.WriteLine("{0}'s selection for this round was {1}.", player, this.hand);
+            Console.WriteLine("{0}'s selection for this round was {1}.", player, selection);
             Console.WriteLine();
-            return this.hand;
+            return selection;
         }
         public void AddToScore()
         {
@@ -78,6 +87,11 @@ namespace RockPaperScissors
         public int GetScore()
         {
             return this.score;
+        }
+
+        public static implicit operator Turn(string v)
+        {
+            throw new NotImplementedException();
         }
     }
 }

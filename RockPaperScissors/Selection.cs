@@ -10,21 +10,24 @@ namespace RockPaperScissors
     {
 
         public int round;
+        public string selection;
+        public string otherSelection;
+
         public string selectionOne;
         public string selectionTwo;
-
         Player playerOne;
         Player playerTwo;
 
 
         public Selection()
         {
-
+            selection = this.selectionOne;
+            otherSelection = this.selectionTwo;
         }
 
         public void JudgeSelection()
         {
-            if (selectionOne == selectionTwo)
+            if (selection == otherSelection)
             {
                 Console.WriteLine();
                 Console.WriteLine("You have made the same selection:  {0}.  Try again.", selectionOne);
@@ -36,31 +39,28 @@ namespace RockPaperScissors
             //{
             //    break;
             //}
-
             else
             {
-                switch (selectionOne)
+                switch (selection)
                 {
                     case "ROCK":
+                        if (otherSelection == "PAPER")
                         {
-                            if (selectionTwo == "PAPER")
-                            {
-                                playerTwo.score += 1;
-                                Console.WriteLine();
-                                Console.WriteLine();
-                                Console.WriteLine("Score one for {0}!", playerTwo.name);
-                                Console.WriteLine();
-                            }
-                            else
-                            {
-                                playerOne.score += 1;
-                                Console.WriteLine();
-                                Console.WriteLine();
-                                Console.WriteLine("Score one for {0}!", playerOne.name);
-                                Console.WriteLine();
-                            }
-                            break;
+                            playerTwo.score += 1;
+                            Console.WriteLine();
+                            Console.WriteLine();
+                            Console.WriteLine("Score one for {0}!", playerTwo.name);
+                            Console.WriteLine();
                         }
+                        else
+                        {
+                            playerOne.score += 1;
+                            Console.WriteLine();
+                            Console.WriteLine();
+                            Console.WriteLine("Score one for {0}!", playerOne.name);
+                            Console.WriteLine();
+                        }
+                        break;
 
                     case "PAPER":
                         if (selectionTwo == "SCISSORS")
@@ -70,7 +70,6 @@ namespace RockPaperScissors
                             Console.WriteLine();
                             Console.WriteLine("Score one for {0}!", playerTwo.name);
                             Console.WriteLine();
-
                         }
                         else
                         {
@@ -79,10 +78,9 @@ namespace RockPaperScissors
                             Console.WriteLine();
                             Console.WriteLine("Score one for {0}!", playerOne.name);
                             Console.WriteLine();
-
                         }
                         break;
-            
+
 
                     case "SCISSORS":
                         if (selectionTwo == "ROCK")
@@ -105,8 +103,9 @@ namespace RockPaperScissors
                         }
                         break;
                 }
-                round += 1;
             }
+            round += 1;
+
         }
     }
 }

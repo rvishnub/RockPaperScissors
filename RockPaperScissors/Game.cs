@@ -44,10 +44,15 @@ namespace RockPaperScissors
 
                 else
                 {
-                    selectionOne = playerOne.TakeTurn();
-                    selectionTwo = playerTwo.ComputerTakeTurn();
+                    Turn turn = new Turn();
+                    selectionOne = turn.TakeTurn();
+                    selectionTwo = turn.ComputerTakeTurn();
                 }
+                Selection selection = new Selection();
+                selection.JudgeSelection();
+
             }
+
 
             Console.WriteLine();
             playerOne.GetWinner();
