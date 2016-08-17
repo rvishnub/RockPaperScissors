@@ -9,11 +9,13 @@ namespace RockPaperScissors
     public class Game
     {
         public int round;
-        public string selectionOne;
-        public string selectionTwo;
+        public string nameOne;
+        public string nameTwo;
 
         Player playerOne;
         Player playerTwo;
+        public string selectionOne;
+        public string selectionTwo;
 
         public Game()
         {
@@ -23,13 +25,12 @@ namespace RockPaperScissors
 
         public void RunGame()
         {
-            playerOne.name = playerOne.GetName();
-            playerTwo.name = playerTwo.GetName();
-            Console.WriteLine();
-
-            Console.WriteLine("Welcome, {0}, {1}!!", playerOne.name, playerTwo.name);
+            this.nameOne = this.playerOne.GetName(this.playerOne);
+            this.nameTwo = this.playerTwo.GetName(this.playerTwo);
+            Console.WriteLine("Welcome, {0}, {1}!!", this.nameOne, this.nameTwo);
             Console.WriteLine();
             Console.WriteLine();
+            round = 0;
 
             while (round < 3)
             {
@@ -45,11 +46,13 @@ namespace RockPaperScissors
                 else
                 {
                     Turn turn = new Turn();
-                    selectionOne = turn.TakeTurn();
-                    selectionTwo = turn.ComputerTakeTurn();
+                    selectionOne = turn.TakeTurn(playerOne);
+                    selectionTwo = turn.ComputerTakeTurn(playerTwo);
+                    Selection selection = new Selection(selectionOne, selectionTwo);
+                    selection.JudgeSelection();
+                    round += 1;
+
                 }
-                Selection selection = new Selection();
-                selection.JudgeSelection();
 
             }
 

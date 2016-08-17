@@ -16,8 +16,6 @@ namespace RockPaperScissors
         public int score;
         public int randomNumber;
 
-        Player player;
-
         List<string> Hands = new List<string>() { "ROCK", "PAPER", "SCISSORS" };
 
         public Turn()
@@ -26,17 +24,14 @@ namespace RockPaperScissors
             score = 0;
         }
 
-        public string TakeTurn()
+        public string TakeTurn(Player player)
         {
             Console.WriteLine();
-            Console.WriteLine("What is your selection, {0}? Rock, Paper or Scissors?", player);
+            Console.WriteLine("What is your selection, {0}? Rock, Paper or Scissors?", name);
             Console.WriteLine();
             selection = Console.ReadLine();
-            Console.WriteLine("{0}'s selection for this round was {1}.", player, selection);
-            Console.WriteLine();
-            selection = selection.ToUpper();
-
-            return selection;
+            selectionOne = selection.ToUpper();
+            return selectionOne;
             
         }
 
@@ -47,16 +42,13 @@ namespace RockPaperScissors
             return randomNumber;
         }
 
-        public string ComputerTakeTurn()
+        public string ComputerTakeTurn(Player playerTwo)
         {
-            selection = Hands[randomNumber];
-            Console.WriteLine("{0}'s selection for this round was {1}.", player, selection);
-            Console.WriteLine();
-
-            return selection;
+            selectionTwo = Hands[randomNumber];
+            return selectionTwo;
         }
      
-        public string GetSelection()
+        public string GetSelection(Player player)
         {
             Console.WriteLine("{0}'s selection for this round was {1}.", player, selection);
             Console.WriteLine();
@@ -79,9 +71,6 @@ namespace RockPaperScissors
                     selection = selection.ToUpper();
                 }
 
-                Console.WriteLine();
-                Console.WriteLine("Thank you, {0}, your choice is {1}.", player, selection);
-                selection = selection.ToUpper();
             }
 
         public int GetScore()

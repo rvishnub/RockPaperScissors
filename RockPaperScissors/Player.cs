@@ -15,23 +15,21 @@ namespace RockPaperScissors
 
         public Player()
         {
-            this.player = name;
-            this.selection = "";
+            player = "Player";
         }
 
 
-        public string GetName()
+        public string GetName(Player player)
         {
-            Console.WriteLine("What is your name, new Player?");
+            Console.WriteLine("What is your name, Player?");
             Console.WriteLine();
-            this.player = Console.ReadLine();
-            return this.player;
-
+            name = Console.ReadLine();
+            return name;
         }
 
         public string SayName()
         {
-            return this.player;
+            return name;
         }
 
         public void GetWinner()
